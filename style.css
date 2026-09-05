@@ -228,57 +228,36 @@ ul {
 
 /* Kode di dalam blok ini HANYA akan aktif jika layar kurang dari 768px */
 @media screen and (max-width: 768px) {
-    
-    /* 1. Menyesuaikan kontainer utama agar tidak menempel ke tepi layar */
-    body {
-        padding: 10px;
-        font-size: 14px; /* Sedikit mengecilkan font dasar untuk ruang ekstra */
+    /* Mencegah layar bergeser ke kiri-kanan (Horizontal Scroll) */
+    html, body {
+        overflow-x: hidden !important;
+        width: 100% !important;
+        padding: 5px !important;
+        margin: 0 !important;
+        box-sizing: border-box !important;
     }
 
-    /* (Sesuaikan nama class '.container' dengan nama class pembungkus utama di HTML Anda) */
-    .container {
-        width: 100%;
-        padding: 15px;
-        margin: 0;
-        box-sizing: border-box;
+    /* Memaksa semua kontainer utama (div, section, dll) agar pas di layar HP */
+    div, section, main {
+        max-width: 100% !important;
+        box-sizing: border-box !important;
     }
 
-    /* 2. Mengubah susunan daftar bookmark dari menyamping menjadi atas-bawah */
-    .bookmark-list li:not(.empty-text) {
-        flex-direction: column; /* Mengubah susunan horizontal menjadi vertikal */
-        align-items: flex-start;
-        gap: 12px; /* Jarak antara teks judul dan tombol-tombol */
+    /* Memaksa daftar list agar tidak berantakan menyamping */
+    li {
+        display: flex !important;
+        flex-direction: column !important; /* Susun atas-bawah */
+        align-items: flex-start !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+        margin-bottom: 10px !important;
     }
 
-    .bookmark-info {
-        width: 100%;
-    }
-
-    /* 3. Memperbesar ukuran tombol agar mudah ditekan oleh jari (Touch Target) */
-    .bookmark-actions {
-        width: 100%;
-        display: flex;
-        justify-content: space-between; /* Menyebarkan tombol secara merata */
-        gap: 5px;
-    }
-
-    .action-btn {
-        flex: 1; /* Membuat setiap tombol memiliki lebar yang sama (membentang) */
-        padding: 12px 10px; /* Area sentuh diperbesar */
-        font-size: 14px;
-        text-align: center;
-    }
-
-    /* 4. Penyesuaian daftar perpustakaan lagu (Library) */
-    .playlist-item {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 5px;
-    }
-    
-    /* 5. Memastikan Audio Player bawaan browser menyesuaikan layar */
-    audio {
-        width: 100%;
-        height: 45px;
+    /* Memaksa deretan tombol mengambil lebar penuh */
+    .bookmark-actions, div[class*="action"], div[class*="btn"] {
+        display: flex !important;
+        flex-direction: row !important;
+        width: 100% !important;
+        margin-top: 10px !important;
     }
 }
