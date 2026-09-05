@@ -3,10 +3,28 @@
 
 const preloadedBookmarks = {
     // Format ID untuk lagu dari Library: "LIB_" + id
-    "LIB_lagu_1": [
-        { "id": 101, "label": "Intro Klasik", "time": 12.5 },
-        { "id": 102, "label": "Klimaks Biola", "time": 180.0 }
-    ],
+    "LIB_1": [
+    {
+      "id": 101,
+      "label": "Tinjauan TI",
+      "time": 21
+    },
+    {
+      "id": 102,
+      "label": "Perkembangan TI",
+      "time": 475
+    },
+    {
+      "id": 103,
+      "label": "Sejarah TI Era Modern",
+      "time": 509
+    },
+    {
+      "id": 104,
+      "label": "Sejarah TI Indonesia",
+      "time": 740
+    }
+  ],
     // Format ID untuk lagu dari komputer: "LOCAL_" + nama_file (spasi diganti underscore)
     "LOCAL_Podcast_Episode_10.mp3": [
         { "id": 201, "label": "Sponsor", "time": 45.0 },
