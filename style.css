@@ -221,3 +221,64 @@ ul {
     border-color: #fad2cf;
 }
 .btn-delete-small:hover { background-color: #fad2cf; }
+
+/* =========================================
+   TATA LETAK RESPONSIF UNTUK HP (MOBILE)
+   ========================================= */
+
+/* Kode di dalam blok ini HANYA akan aktif jika layar kurang dari 768px */
+@media screen and (max-width: 768px) {
+    
+    /* 1. Menyesuaikan kontainer utama agar tidak menempel ke tepi layar */
+    body {
+        padding: 10px;
+        font-size: 14px; /* Sedikit mengecilkan font dasar untuk ruang ekstra */
+    }
+
+    /* (Sesuaikan nama class '.container' dengan nama class pembungkus utama di HTML Anda) */
+    .container {
+        width: 100%;
+        padding: 15px;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    /* 2. Mengubah susunan daftar bookmark dari menyamping menjadi atas-bawah */
+    .bookmark-list li:not(.empty-text) {
+        flex-direction: column; /* Mengubah susunan horizontal menjadi vertikal */
+        align-items: flex-start;
+        gap: 12px; /* Jarak antara teks judul dan tombol-tombol */
+    }
+
+    .bookmark-info {
+        width: 100%;
+    }
+
+    /* 3. Memperbesar ukuran tombol agar mudah ditekan oleh jari (Touch Target) */
+    .bookmark-actions {
+        width: 100%;
+        display: flex;
+        justify-content: space-between; /* Menyebarkan tombol secara merata */
+        gap: 5px;
+    }
+
+    .action-btn {
+        flex: 1; /* Membuat setiap tombol memiliki lebar yang sama (membentang) */
+        padding: 12px 10px; /* Area sentuh diperbesar */
+        font-size: 14px;
+        text-align: center;
+    }
+
+    /* 4. Penyesuaian daftar perpustakaan lagu (Library) */
+    .playlist-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+    
+    /* 5. Memastikan Audio Player bawaan browser menyesuaikan layar */
+    audio {
+        width: 100%;
+        height: 45px;
+    }
+}
