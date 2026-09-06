@@ -3,63 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Aplikasi MP3 Player Pro</title>
-    <!-- Menghubungkan file CSS -->
+    <title>Aplikasi Pemutar MP3</title>
+    <!-- Menghubungkan file CSS dengan pembaruan versi cache -->
     <link rel="stylesheet" href="style.css?v=4">
 </head>
 <body>
 
     <div class="app-container">
         
-        <!-- PANEL KIRI: Area Pemutar Utama dan Bookmark -->
-        <div class="left-panel">
-            <h2>Sistem Informasi - AUDIO MODUL</h2>
-            
-            <div class="file-input-wrapper">
-                <label for="audioFile" class="input-label">Atau putar lagu dari komputer Anda:</label>
-                <input type="file" id="audioFile" accept="audio/mp3, audio/wav, audio/ogg">
-            </div>
-
+        <!-- PANEL PEMUTAR UTAMA -->
+        <div class="player-panel">
+            <h2>AUDIO MODUL</h2>
             <div class="player-box">
-                <h3 id="now-playing" class="now-playing-text">Belum ada lagu yang diputar</h3>
+                <h3 id="now-playing" class="now-playing-text">Pilih lagu dari playlist</h3>
                 <audio id="audioPlayer" controls>
                     Browser Anda tidak mendukung elemen audio.
                 </audio>
             </div>
-
-            <button id="btn-bookmark" class="btn-bookmark">📍 Tandai Posisi Saat Ini</button>
-
-            <div class="bookmark-container">
-                <h3>Daftar Penanda Waktu</h3>
-                <ul id="daftarBookmark" class="bookmark-list">
-                    <li class="empty-text">Belum ada penanda. Putar lagu lalu klik tombol di atas.</li>
-                </ul>
-            </div>
         </div>
 
-        <!-- PANEL KANAN: Area Library / Playlist -->
-        <div class="right-panel">
-            <div class="library-container">
-                <h3>LIBRARY</h3>
-                <ul id="mp3-list" class="playlist">
-                    <!-- Daftar lagu akan di-generate oleh JavaScript di sini -->
-                </ul>
-            </div>
+        <!-- PANEL PLAYLIST DROPBOX -->
+        <div class="playlist-panel">
+            <h3>PLAYLIST</h3>
+            <ul id="mp3-list" class="playlist">
+                <!-- Daftar lagu di-generate otomatis oleh JavaScript -->
+            </ul>
         </div>
 
     </div>
 
-    <div class="database-controls" style="margin-top: 20px; padding: 15px; background: #f1f3f4; border-radius: 8px;">
-        <h4>⚙️ Manajemen Database JSON</h4>
-            <button id="btn-export" style="padding: 8px 12px; cursor: pointer;">📥 Download JSON</button>
-    
-        <!-- Input file yang disembunyikan untuk upload -->
-        <input type="file" id="file-import" accept=".json" style="display: none;">
-            <button id="btn-import" style="padding: 8px 12px; cursor: pointer;" onclick="document.getElementById('file-import').click()">📤 Upload JSON</button>
-    </div>
-
-    <!-- Menghubungkan file JavaScript (Letakkan di bawah agar HTML dimuat duluan) -->
-    <script src="database.js"></script>
+    <!-- Menghubungkan file JavaScript utama -->
     <script src="script.js"></script>
 </body>
 </html>
