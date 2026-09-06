@@ -1,8 +1,5 @@
-/* =========================================
-   1. RESET GLOBAL & DASAR HALAMAN
-   ========================================= */
 * {
-    box-sizing: border-box; /* Menjamin padding tidak menambah lebar total elemen */
+    box-sizing: border-box;
 }
 
 body {
@@ -11,50 +8,31 @@ body {
     margin: 0;
     padding: 20px;
     display: flex;
-    flex-direction: column; /* KUNCI FIX 1: Memaksa tata letak tersusun ke bawah */
-    align-items: center;    /* Menengahkan semua kontainer di layar PC */
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
 }
 
-/* =========================================
-   2. TATA LETAK UTAMA (PC & TABLET)
-   ========================================= */
+/* Kontainer utama penyusun panel */
 .app-container {
     display: flex;
-    flex-wrap: wrap; 
-    gap: 25px;
-    max-width: 900px;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 600px;
     width: 100%;
 }
 
-.left-panel, .right-panel {
-    background-color: white;
+.player-panel, .playlist-panel {
+    background-color: #ffffff;
     padding: 25px;
     border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    flex: 1; 
-    min-width: 280px; /* Diperkecil agar lebih luwes di layar sempit */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 h2, h3 {
-    color: #333;
+    color: #333333;
     margin-top: 0;
-}
-
-.file-input-wrapper {
-    margin-bottom: 25px;
-    padding-bottom: 15px;
-    border-bottom: 2px dashed #ddd;
-}
-
-.input-label {
-    display: block;
-    margin-bottom: 8px;
-    font-size: 14px;
-    color: #666;
-}
-
-.player-box {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 .now-playing-text {
@@ -69,112 +47,23 @@ audio {
     outline: none;
 }
 
-.btn-bookmark {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 12px;
-    width: 100%;
-    border-radius: 6px;
-    font-size: 15px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    margin-bottom: 20px;
-}
-
-.btn-bookmark:hover {
-    background-color: #0056b3;
-}
-
-ul {
+/* Gaya Daftar Playlist */
+ul.playlist {
     list-style-type: none;
     padding: 0;
     margin: 0;
-}
-
-.empty-text {
-    color: #888;
-    font-size: 14px;
-    font-style: italic;
-    background: none;
-    border: none;
-    text-align: center;
-}
-
-/* =========================================
-   3. GAYA DAFTAR BOOKMARK & LIBRARY
-   ========================================= */
-.bookmark-list li:not(.empty-text) {
-    background-color: #f8f9fa;
-    border: 1px solid #dee2e6;
-    margin-bottom: 8px;
-    padding: 10px 12px;
-    border-radius: 6px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    cursor: pointer;
-}
-
-.bookmark-list li:hover:not(.empty-text) {
-    background-color: #e2e6ea;
-}
-
-.bookmark-info {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-}
-
-.bookmark-name {
-    font-weight: bold;
-    color: #333;
-    font-size: 14px;
-    margin-bottom: 4px;
-}
-
-.bookmark-time-text {
-    font-size: 12px;
-    color: #007bff;
-}
-
-.bookmark-actions {
-    display: flex;
-    gap: 8px;
-}
-
-.action-btn {
-    background: none;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    padding: 6px 10px;
-    cursor: pointer;
-    font-size: 13px;
-    transition: all 0.2s;
-}
-
-.btn-play-small { background-color: #e6f4ea; color: #1e8e3e; border-color: #ceead6; }
-.btn-play-small:hover { background-color: #ceead6; }
-
-.btn-edit-small { background-color: #fef7e0; color: #f29900; border-color: #fbe9a2; }
-.btn-edit-small:hover { background-color: #fbe9a2; }
-
-.btn-delete-small { background-color: #fce8e6; color: #d93025; border-color: #fad2cf; }
-.btn-delete-small:hover { background-color: #fad2cf; }
-
-.playlist {
-    max-height: 400px;
+    max-height: 350px;
     overflow-y: auto;
 }
 
 .playlist-item {
-    padding: 12px;
-    border-bottom: 1px solid #eee;
+    padding: 12px 15px;
+    border-bottom: 1px solid #eeeeee;
     cursor: pointer;
     display: flex;
     justify-content: space-between;
-    transition: all 0.2s;
+    align-items: center;
+    transition: background-color 0.2s, color 0.2s;
     border-radius: 6px;
     margin-bottom: 4px;
 }
@@ -183,6 +72,7 @@ ul {
     background-color: #f5f5f5;
 }
 
+/* Penanda item lagu yang sedang diputar */
 .playlist-item.active {
     background-color: #e0f7fa;
     color: #00796b;
@@ -190,47 +80,26 @@ ul {
     font-weight: bold;
 }
 
-.song-title { font-size: 15px; }
-.song-duration { font-size: 13px; color: #888; }
-
-/* KUNCI FIX 2: Menyesuaikan Database Control agar rapi */
-.database-controls {
-    max-width: 900px;
-    width: 100%;
-    box-sizing: border-box;
+.song-title {
+    font-size: 15px;
 }
 
-/* =========================================
-   4. TATA LETAK RESPONSIF (KHUSUS HP)
-   ========================================= */
+.song-duration {
+    font-size: 13px;
+    color: #888888;
+}
+
+.playlist-item.active .song-duration {
+    color: #00796b;
+}
+
+/* Responsif untuk Layar HP */
 @media screen and (max-width: 768px) {
     body {
-        padding: 10px; /* Hemat ruang kosong di tepi HP */
+        padding: 10px;
     }
 
-    .left-panel, .right-panel {
-        min-width: 100%; /* Memaksa panel mengambil ukuran penuh HP */
-        padding: 15px; 
-    }
-
-    /* Mengubah susunan item bookmark menjadi atas-bawah */
-    .bookmark-list li:not(.empty-text) {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .bookmark-info {
-        width: 100%;
-        margin-bottom: 12px; /* Jarak antara teks dan deretan tombol */
-    }
-
-    .bookmark-actions {
-        width: 100%;
-        justify-content: space-between; /* Menyebar tombol Play, Edit, Delete */
-    }
-
-    .action-btn {
-        flex: 1; /* Semua tombol akan berukuran sama besar */
-        padding: 12px 5px; /* Memperbesar area ketukan jari */
+    .player-panel, .playlist-panel {
+        padding: 15px;
     }
 }
